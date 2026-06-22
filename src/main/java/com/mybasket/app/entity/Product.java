@@ -3,29 +3,35 @@ package com.mybasket.app.entity;
 
 import jakarta.persistence.*;
 
+import java.util.HashSet;
+import java.util.LinkedHashSet;
+import java.util.Set;
+
 @Entity
 @Table(name="my-basket-products")
 public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Integer productId;
 
     private String title;
     private String description;
-    private String short_desciption;
+    private String short_description;
     private double price;
     private  boolean live;
     private boolean outofStock;
 
+@ManyToMany
+  private Set<Category> categories = new LinkedHashSet<>();
+
+
 //    getter setter
-
-
-    public Integer getId() {
-        return id;
+    public Integer getProductId() {
+        return productId;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setProductId(Integer productId) {
+        this.productId = productId;
     }
 
     public String getTitle() {
@@ -44,12 +50,12 @@ public class Product {
         this.description = description;
     }
 
-    public String getShort_desciption() {
-        return short_desciption;
+    public String getShort_description() {
+        return short_description;
     }
 
-    public void setShort_desciption(String short_desciption) {
-        this.short_desciption = short_desciption;
+    public void setShort_description(String short_description) {
+        this.short_description = short_description;
     }
 
     public double getPrice() {

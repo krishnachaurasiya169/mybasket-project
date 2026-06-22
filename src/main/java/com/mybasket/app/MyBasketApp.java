@@ -34,33 +34,33 @@ public class MyBasketApp implements CommandLineRunner {
     public void run(String... args) throws Exception {
         System.out.println("app started");
 
- var user = new User();
- user.setUserId(1232);
- user.setName("abhinav");
- user.setEmail("abhinav@dev.ac.in");
-userservice.saveUser(user);
 
-//      var product = new Product();
-//      product.setTitle("lays");
-//      product.setPrice(10000);
-//      product.setDescription("it the it very best product");
-//      product.setShort_desciption("nyc product");
-//      product.setLive(true);
-//      product.setOutofStock(true);
-//     productRepository.save(product);
-//        System.out.println("project saved ");
+      var product = new Product();
+      product.setTitle("iphone 17 pro max");
+      product.setPrice(150000);
+      product.setDescription("it the it very best product in the world");
+      product.setShort_description("nyc product no one can bit this product");
+      product.setLive(true);
+      product.setOutofStock(true);
+      productRepository.save(product);
+        System.out.println("project saved ");
 
 
 
-        productRepository.findByIdAndTitle(3,"Lays")
-                .ifPresentOrElse(product ->{
-                    System.out.println(product.getTitle()+" : product found : "+product.getPrice());
+        productRepository.findByProductIdAndTitle(3,"Lays")
+                .ifPresentOrElse(product9 ->{
+                    System.out.println(product9.getTitle()+" : product found : "+product.getPrice());
                 }
                 ,
                         ()->{
                             System.out.println("product not found");
                         }
                         );
+
+
+        productRepository.getAllProduct().stream().forEach(product9 -> {
+            System.out.println(product9.getTitle());
+        });
 
 
 
