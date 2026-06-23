@@ -13,7 +13,7 @@ public class OrderItem {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-//    order item me  many product ho sakte hai na
+//    order item me many product ho sakte hai na
     @ManyToOne
     private Product product;
 
