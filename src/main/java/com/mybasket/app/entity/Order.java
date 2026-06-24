@@ -11,8 +11,8 @@ import java.util.List;
 public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-
     private Long id;
+
 //ek order many user k ho sakte hai , lazy means when we fetch then user comes other wise not comes
     @ManyToOne(fetch = FetchType.LAZY)
     private User user;

@@ -10,21 +10,18 @@ public class Payment {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long paymentId;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    private User user;
-
-
-
-
-    @OneToOne(mappedBy = "order_id")
-    private Order order;
-
-
     @Enumerated(EnumType.STRING)
     private PaymentStatus status = PaymentStatus.PENDING;
     @Enumerated(EnumType.STRING)
     private PaymentMethod method = PaymentMethod.COD;
 
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    private User user;
+
     @OneToOne(mappedBy = "payment")
     private PaymentMethodInfo paymentMethodInfo;
+
+    @OneToOne(mappedBy = "payment")
+    private Order order;
 }

@@ -16,7 +16,7 @@ public class Address {
 
 //    means ek address se koi ek user nikl sakte h
 //    this is resposible for foreign key
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="user_id")
     private User user;
 
