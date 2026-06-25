@@ -67,10 +67,10 @@ private UserRepository userRepository;
 //        });
 
         User user = new User();
-        user.setName("vivek");
-        user.setEmail("vivek@gmail.com");
-        user.setPassword("abc@1234");
-        user.setEmail("abc.png");
+        user.setName("vivan");
+        user.setEmail("vivan@gmail.com");
+        user.setPassword("vivan@1232");
+        user.setUserImageUrl("viv.png");
 
         userRepository.save(user);
 
