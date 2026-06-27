@@ -66,21 +66,24 @@ private UserRepository userRepository;
 //            System.out.println(product9.getTitle());
 //        });
 
-        User user = new User();
-        user.setName("vivan");
-        user.setEmail("vivan@gmail.com");
-        user.setPassword("vivan@1232");
-        user.setUserImageUrl("viv.png");
-
-        userRepository.save(user);
 
 
-        userRepository.findById(1232).ifPresentOrElse(user1 -> {
-             userRepository.delete(user1);
-         },
-                 ()->{
-                     System.out.println("User is already deleted");
-                 });
+
+//        User user = new User();
+//        user.setName("vivan");
+//        user.setEmail("vivan@gmail.com");
+//        user.setPassword("vivan@1232");
+//        user.setUserImageUrl("viv.png");
+//
+//        userRepository.save(user);
+//
+//
+//        userRepository.findById(1232).ifPresentOrElse(user1 -> {
+//             userRepository.delete(user1);
+//         },
+//                 ()->{
+//                     System.out.println("User is already deleted");
+//                 });
 
 
 
