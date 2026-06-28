@@ -31,7 +31,7 @@ public class UserController {
 //        user.setUserId(23432);
 //        user.setUserImageUrl("abc.png");
 
-        return userRepository.findAll();
+        return userRepository.  findAll();
     }
 
 }
