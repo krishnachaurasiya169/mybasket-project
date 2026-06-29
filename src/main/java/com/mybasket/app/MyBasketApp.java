@@ -1,10 +1,6 @@
 package com.mybasket.app;
 
-import com.mybasket.app.entity.Category;
-import com.mybasket.app.entity.Product;
-import com.mybasket.app.entity.User;
 import com.mybasket.app.repository.CategoryRepository;
-import com.mybasket.app.repository.ProductRepository;
 import com.mybasket.app.repository.UserRepository;
 import com.mybasket.app.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,18 +13,18 @@ import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 @EnableJpaAuditing
 public class MyBasketApp implements CommandLineRunner {
 
-    @Autowired
-    private UserService userservice;
-
 //    ye to instance hai to static k under nahi hoga
 //    @Autowired
-//    private ProductRepository productRepository;
 
     @Autowired
+    private UserService userservice;
+    @Autowired
     private CategoryRepository categoryRepository;
+   @Autowired
+   private UserRepository userRepository;
 
-@Autowired
-private UserRepository userRepository;
+//   @Autowired
+//   @private ProductService productService;
 
     public static void main(String[] args) {
 		SpringApplication.run(MyBasketApp.class, args);
