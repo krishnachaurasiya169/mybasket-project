@@ -1,20 +1,25 @@
 package com.mybasket.app.service;
 
-import org.springframework.stereotype.Service;
+import com.mybasket.app.dto.CategoryDto;
 
-@Service
+import java.util.List;
+
+
 public interface CategoryService {
 
+
     //  Create
+    CategoryDto create(CategoryDto categoryDto);
 
+    //  getall
 
-//  update
-
-
-//  getall
-
+    List<CategoryDto> getAll();
 
 //  getsingle
+
+    CategoryDto get(Long categoryId);
+
+//      update
 
 
 //  delete
