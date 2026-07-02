@@ -2,11 +2,13 @@ package com.mybasket.app.service.impl;
 
 import com.mybasket.app.dto.CategoryDto;
 import com.mybasket.app.entity.Category;
+import com.mybasket.app.exception.ResourceNotFoundException;
 import com.mybasket.app.repository.CategoryRepository;
 import com.mybasket.app.service.CategoryService;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
+
 import java.util.List;
 
 
@@ -39,7 +41,7 @@ public class CategoryServiceImpl implements CategoryService {
 
     @Override
     public CategoryDto get(Long categoryId) {
-       Category category= categoryRepository.findById(categoryId).get();
+       Category category= categoryRepository.findById(categoryId).orElseThrow(()-> new ResourceNotFoundException("Category not found with this"+categoryId));
         return  modelMapper.map(category,CategoryDto.class);
     }
 
