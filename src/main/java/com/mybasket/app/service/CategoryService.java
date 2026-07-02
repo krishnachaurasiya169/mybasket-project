@@ -20,9 +20,9 @@ public interface CategoryService {
     CategoryDto get(Long categoryId);
 
 //      update
-
+   CategoryDto update(Long categoryId , CategoryDto categoryDto);
 
 //  delete
 
-
+ void delete(Long categoryId);
 }

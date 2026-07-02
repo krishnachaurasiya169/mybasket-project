@@ -44,7 +44,7 @@ public class MyBasketApp implements CommandLineRunner {
 //      product.setLive(true);
 //      product.setOutofStock(true);
 //      productRepository.save(product);
-//        System.out.println("project saved ");
+//      ystem.out.println("project saved ");
 
 
 //

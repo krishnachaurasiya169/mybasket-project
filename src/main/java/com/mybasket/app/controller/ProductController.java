@@ -1,7 +1,9 @@
 package com.mybasket.app.controller;
 
+import com.mybasket.app.dto.ProductDto;
 import com.mybasket.app.entity.Product;
 import com.mybasket.app.service.ProductService;
+import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -45,10 +47,10 @@ import java.util.List;
 //    @RequestMapping(method = RequestMethod.POST)
 //    or
     @PostMapping
-    public ResponseEntity<Product> createProduct(@RequestBody Product product){
+    public ResponseEntity<ProductDto> createProduct(@Valid @RequestBody ProductDto productDto){
 //        System.out.println("product name : "+product.getTitle());
 //        System.out.println("Create product");
-        Product savedEntity = productService.createProduct(product);
+        ProductDto savedEntity = productService.createProduct(productDto);
         return new ResponseEntity<>(savedEntity,HttpStatus.CREATED);
     }
 

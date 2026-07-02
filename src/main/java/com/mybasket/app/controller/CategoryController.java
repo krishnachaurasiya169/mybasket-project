@@ -14,6 +14,7 @@ public class CategoryController {
 
     private final CategoryService categoryService;
 
+
     public CategoryController(CategoryService categoryService) {
         this.categoryService = categoryService;
     }
@@ -38,4 +39,20 @@ public class CategoryController {
         CategoryDto categoryDto = categoryService.get(categoryId);
         return new ResponseEntity<>(categoryDto, HttpStatus.OK);
     }
-}
+
+//    update the data from the database
+    @PutMapping("/{categoryId}")
+                public ResponseEntity<CategoryDto>update(@PathVariable("categoryId") Long categoryId , @RequestBody CategoryDto categoryDto)
+             {
+                CategoryDto updateCategory= categoryService.update(categoryId,categoryDto);
+
+                return new ResponseEntity<>(updateCategory ,HttpStatus.OK);
+               }
+
+//               delete
+    @DeleteMapping("/{categoryId}")
+    public ResponseEntity<Void> delete(@PathVariable Long categoryId){
+        categoryService.delete(categoryId);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+    }
