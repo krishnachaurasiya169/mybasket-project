@@ -1,5 +1,6 @@
 package com.mybasket.app.controller;
 
+import com.mybasket.app.dto.PageResponse;
 import com.mybasket.app.dto.ProductDto;
 import com.mybasket.app.entity.Product;
 import com.mybasket.app.service.ProductService;
@@ -7,8 +8,6 @@ import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 //@Controller
 @RestController
@@ -29,9 +28,14 @@ import java.util.List;
 //    @ResponseBody means jaha pr hogya ye uski body return krega instead spring boot give the new annotation that known as @RestController
 
      @GetMapping
-     public List<Product> getProducts(){
-     List<Product> getAll = productService.getAll();
-     return getAll;
+     public PageResponse<Product> getProducts(
+//             pagination concept laga hai
+          @RequestParam(value = "page",defaultValue = "0")   int page,
+          @RequestParam(value = "size",defaultValue = "10")  int size,
+          @RequestParam("sortBy") String sortBy,
+          @RequestParam(value = "sortDir", defaultValue="asc") String sortDir
+     ){
+         return productService.getAll(page,size,sortBy,sortDir);
      }
 
 //     get single product

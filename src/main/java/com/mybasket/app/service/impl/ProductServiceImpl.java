@@ -1,14 +1,17 @@
 package com.mybasket.app.service.impl;
 
+import com.mybasket.app.dto.PageResponse;
 import com.mybasket.app.dto.ProductDto;
 import com.mybasket.app.entity.Product;
 import com.mybasket.app.repository.ProductRepository;
 import com.mybasket.app.service.ProductService;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
-import org.springframework.stereotype.Service;
-
-import java.util.List;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.stereotype.Service  ;
 
 @Service
 @RequiredArgsConstructor
@@ -39,8 +42,17 @@ public class ProductServiceImpl implements ProductService {
 
 
     @Override
-    public List<Product> getAll() {
-        return productRepository.findAll();
+    public PageResponse<Product> getAll(int page,int size,String sortBy,String sortDir) {
+//        findAll() method me pageable bhi pass kr skte hai aur sort bhi , aur direction   hai
+//        pageable ko kaise passs kare pageable ek interface hai iska direct object nahi bana skte
+//        toh hm pageRequest ka object use karenge aur isme of() method hota hai
+
+        Sort sort = sortDir.equalsIgnoreCase("desc")
+                ? Sort.by(sortBy).descending()
+                :Sort.by(sortBy).ascending();
+        Pageable pageable = PageRequest.of(page, size,sort);
+       Page<Product>pageProduct = productRepository.findAll(pageable);
+       return PageResponse.of(pageProduct);
     }
 
     @Override

@@ -1,13 +1,12 @@
 package com.mybasket.app.service;
 
+import com.mybasket.app.dto.PageResponse;
 import com.mybasket.app.dto.ProductDto;
 import com.mybasket.app.entity.Product;
 
-import java.util.List;
-
 public interface ProductService  {
 
-    public List<Product> getAll();
+    public PageResponse<Product> getAll(int page, int size , String sortBy, String sortDir);
     public Product get(Integer productId);
 
     public ProductDto createProduct(ProductDto productDto);
