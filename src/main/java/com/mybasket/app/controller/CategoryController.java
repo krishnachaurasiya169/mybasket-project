@@ -14,7 +14,6 @@ public class CategoryController {
 
     private final CategoryService categoryService;
 
-
     public CategoryController(CategoryService categoryService) {
         this.categoryService = categoryService;
     }
@@ -49,7 +48,7 @@ public class CategoryController {
                 return new ResponseEntity<>(updateCategory ,HttpStatus.OK);
                }
 
-//               delete
+//            delete
     @DeleteMapping("/{categoryId}")
     public ResponseEntity<Void> delete(@PathVariable Long categoryId){
         categoryService.delete(categoryId);

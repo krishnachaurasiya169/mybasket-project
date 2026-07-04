@@ -2,6 +2,7 @@ package com.mybasket.app.exception;
 
 import com.mybasket.app.dto.ErrorResponse;
 import com.mybasket.app.dto.ValidationErrorResponse;
+import org.apache.coyote.BadRequestException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -42,7 +43,16 @@ public ResponseEntity<List<ValidationErrorResponse>> handleMethodArgumentNotVali
             .stream()
             .map(error -> new ValidationErrorResponse(error.getField(), error.getDefaultMessage()))
             .toList();
-
     return new ResponseEntity<>(fieldErrorList, HttpStatus.BAD_REQUEST);
 }
+
+
+    //exception ko handle Marni hai :
+    @ExceptionHandler(BadRequestException.class)
+    public ResponseEntity<ErrorResponse> handleBadRequest(BadRequestException ex) {
+        System.out.println("Exception are handled");
+        ErrorResponse errorResponse = new ErrorResponse(ex.getMessage(), HttpStatus.BAD_REQUEST, 400);
+        return new ResponseEntity<>(errorResponse, HttpStatus.BAD_REQUEST);
+    }
+
 }

@@ -2,6 +2,9 @@ package com.mybasket.app.entity;
 
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
 import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.SQLRestriction;
 
@@ -21,7 +24,9 @@ import java.util.Set;
 // @table means is table ka name jpa_user hai id we not use table annotation then table name by default class name hota hai
 @Table(name="my-basket-users")
 
-
+@Getter
+@Setter
+@AllArgsConstructor
 
 public class User extends BaseEntity {
 
@@ -41,8 +46,6 @@ public class User extends BaseEntity {
 
     private String password;
 
-    private String userImageUrl;
-
 
 // one user se many addesses nikl sakte hai
 //    orm iska bhi new table create kr de rha hai to redudency aagya
@@ -54,43 +57,5 @@ public class User extends BaseEntity {
 @OneToMany(mappedBy = "user",fetch = FetchType.LAZY)
 private Set<PaymentMethodInfo> paymentMethodInfos = new LinkedHashSet<>();
 
-    public int getUserId() {
-        return userId;
-    }
 
-    public void setUserId(int userId) {
-        this.userId = userId;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public String getUserImageUrl() {
-        return userImageUrl;
-    }
-
-    public void setUserImageUrl(String userImageUrl) {
-        this.userImageUrl = userImageUrl;
-    }
 }
