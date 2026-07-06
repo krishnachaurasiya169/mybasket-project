@@ -36,15 +36,15 @@ public class MyBasketApp implements CommandLineRunner {
         System.out.println("app started");
 
 
-//      var product = new Product();
-//      product.setTitle("iphone 17 pro max");
-//      product.setPrice(150000);
-//      product.setDescription("it the it very best product in the world");
-//      product.setShort_description("nyc product no one can bit this product");
-//      product.setLive(true);
-//      product.setOutofStock(true);
-//      productRepository.save(product);
-//      ystem.out.println("project saved ");
+//       var product = new Product();
+//       product.setTitle("iphone 17 pro max");
+//       product.setPrice(150000);
+//       product.setDescription("it the it very best product in the world");
+//       product.setShort_description("nyc product no one can bit this product");
+//       product.setLive(true);
+//       product.setOutofStock(true);
+//       productRepository.save(product);
+//       ystem.out.println("project saved ");
 
 
 //

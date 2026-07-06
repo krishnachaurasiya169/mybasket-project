@@ -43,7 +43,7 @@ public class ProductController {
 //             pagination concept laga hai
             @RequestParam(value = "page",defaultValue = "0")   int page,
             @RequestParam(value = "size",defaultValue = "10")  int size,
-            @RequestParam("sortBy") String sortBy,
+            @RequestParam(value = "sortBy",defaultValue = "productId") String sortBy,
             @RequestParam(value = "sortDir", defaultValue="asc") String sortDir
     ){
         return productService.getAll(page,size,sortBy,sortDir);
