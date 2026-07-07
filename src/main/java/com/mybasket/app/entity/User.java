@@ -54,8 +54,8 @@ public class User extends BaseEntity {
     private Set<Address>addresses = new HashSet<>();
 
 
-@OneToMany(mappedBy = "user",fetch = FetchType.LAZY)
-private Set<PaymentMethodInfo> paymentMethodInfos = new LinkedHashSet<>();
+   @OneToMany(mappedBy = "user",fetch = FetchType.LAZY)
+   private Set<PaymentMethodInfo> paymentMethodInfos = new LinkedHashSet<>();
 
 
 }
