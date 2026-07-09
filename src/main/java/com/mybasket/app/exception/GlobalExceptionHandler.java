@@ -1,5 +1,6 @@
 package com.mybasket.app.exception;
 
+import com.mybasket.app.dto.BadExceptionDto;
 import com.mybasket.app.dto.ErrorResponse;
 import com.mybasket.app.dto.ValidationErrorResponse;
 import org.apache.coyote.BadRequestException;
@@ -47,12 +48,23 @@ public ResponseEntity<List<ValidationErrorResponse>> handleMethodArgumentNotVali
 }
 
 
-    //exception ko handle Marni hai :
+    //exception ko handle karni hai :
     @ExceptionHandler(BadRequestException.class)
     public ResponseEntity<ErrorResponse> handleBadRequest(BadRequestException ex) {
         System.out.println("Exception are handled");
         ErrorResponse errorResponse = new ErrorResponse(ex.getMessage(), HttpStatus.BAD_REQUEST, 400);
         return new ResponseEntity<>(errorResponse, HttpStatus.BAD_REQUEST);
     }
+
+
+    @ExceptionHandler(BadCredentialsException.class)
+    public ResponseEntity<BadExceptionDto> handleBadCredentialsException(BadCredentialsException ex){
+
+    BadExceptionDto badExDto = new BadExceptionDto(ex.getMessage(),HttpStatus.UNAUTHORIZED.value(),System.currentTimeMillis());
+
+    return new ResponseEntity<>(badExDto,HttpStatus.UNAUTHORIZED);
+
+    }
+
 
 }

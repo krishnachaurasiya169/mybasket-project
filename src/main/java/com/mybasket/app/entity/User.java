@@ -46,6 +46,8 @@ public class User extends BaseEntity {
 
     private String password;
 
+    private String role = "ROLE_NORMAL";
+
 
 // one user se many addesses nikl sakte hai
 //    orm iska bhi new table create kr de rha hai to redudency aagya

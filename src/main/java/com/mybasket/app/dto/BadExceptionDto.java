@@ -4,15 +4,13 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.springframework.http.HttpStatus;
 
+@AllArgsConstructor
 @Getter
 @Setter
 @NoArgsConstructor
-@AllArgsConstructor
-
-public class ErrorResponse {
+public class BadExceptionDto {
     private String message;
-    private HttpStatus status;
-    private  Integer code;
+    private int status;
+    private  Long timestamp;
 }
