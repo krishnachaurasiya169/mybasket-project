@@ -1,6 +1,7 @@
 package com.mybasket.app.entity;
 
 
+import com.mybasket.app.security.ROLE;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -46,7 +47,8 @@ public class User extends BaseEntity {
 
     private String password;
 
-    private String role = "ROLE_NORMAL";
+    @Enumerated(EnumType.STRING)
+    private ROLE role = ROLE.ROLE_NORMAL;
 
 
 // one user se many addesses nikl sakte hai

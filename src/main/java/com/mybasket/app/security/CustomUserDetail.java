@@ -2,8 +2,9 @@ package com.mybasket.app.security;
 
 import com.mybasket.app.entity.User;
 import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
 import java.util.Collection;
 import java.util.List;
 
@@ -18,11 +19,16 @@ public class CustomUserDetail implements UserDetails
     }
 
 
-// role based authentication k liye
-
+//  role based  authentication k liye
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return List.of();
+//        ROLE role = user.getRole();
+//        Collection roleCollection = new ArrayList();
+//        roleCollection.add(new SimpleGrantedAuthority(role.toString()));
+//        return roleCollection;
+
+
+        return List.of(new SimpleGrantedAuthority(user.getRole().toString()));
     }
 
     @Override
@@ -52,8 +58,9 @@ public class CustomUserDetail implements UserDetails
 
     @Override
     public boolean isEnabled() {
-        return user.isEnable();
+        return true;
     }
+
     public User getUser(){
         return user;
     }
