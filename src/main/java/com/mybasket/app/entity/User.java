@@ -5,6 +5,7 @@ import com.mybasket.app.security.ROLE;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.SQLRestriction;
@@ -28,7 +29,7 @@ import java.util.Set;
 @Getter
 @Setter
 @AllArgsConstructor
-
+@NoArgsConstructor
 public class User extends BaseEntity {
 
 //    @Id means ye column primary key hai

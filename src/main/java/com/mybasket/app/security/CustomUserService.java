@@ -24,6 +24,6 @@ public class CustomUserService implements UserDetailsService {
 //      user repo me sb rahga
         User user = userRepository.findByEmail(username).orElseThrow(()-> new BadCredentialsException("username or password invalid"));
         UserDetails userDetails = new CustomUserDetail(user);
-        return null;
+        return userDetails;
     }
 }

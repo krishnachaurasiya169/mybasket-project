@@ -15,11 +15,12 @@ public class CustomUserDetail implements UserDetails
     private User user;
 
     public CustomUserDetail(User user){
-         //    aapke user ki  information
+        //    aapke user ki  information
+        this.user = user;
     }
 
 
-//  role based  authentication k liye
+    //  role based  authentication k liye
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
 //        ROLE role = user.getRole();
@@ -67,4 +68,6 @@ public class CustomUserDetail implements UserDetails
     public void setUser(User user){
         this.user = user;
     }
+
+
 }
