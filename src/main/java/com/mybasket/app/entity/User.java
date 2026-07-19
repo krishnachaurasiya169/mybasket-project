@@ -48,6 +48,8 @@ public class User extends BaseEntity {
 
     private String password;
 
+    private boolean enable = true;
+
     @Enumerated(EnumType.STRING)
     private ROLE role = ROLE.ROLE_NORMAL;
 
