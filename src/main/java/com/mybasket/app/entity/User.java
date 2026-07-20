@@ -40,7 +40,6 @@ public class User extends BaseEntity {
     @Column(name="jpa_user_id")
     private int userId;
 
-
     private String name;
 
     @Column(unique = true,length = 100)
@@ -54,9 +53,9 @@ public class User extends BaseEntity {
     private ROLE role = ROLE.ROLE_NORMAL;
 
 
-// one user se many addesses nikl sakte hai
-//    orm iska bhi new table create kr de rha hai to redudency aagya
-//    to yaddi mapppedBy user se kr de to ek hi tble se km ho jayega
+//   one user se many addesses nikl sakte hai
+//   orm iska bhi new table create kr de rha hai to redudency aagya
+//   to yaddi mapppedBy user se kr de to ek hi tble se km ho jayega
     @OneToMany(mappedBy = "user")
     private Set<Address>addresses = new HashSet<>();
 

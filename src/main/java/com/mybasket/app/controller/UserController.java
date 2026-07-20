@@ -1,15 +1,12 @@
 package com.mybasket.app.controller;
 
+import com.mybasket.app.dto.UserDto;
 import com.mybasket.app.entity.User;
 import com.mybasket.app.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 import java.util.List;
-
-
 
 
 @RestController
@@ -30,6 +27,16 @@ public class UserController {
 //        user.setUserId(23432);
 //        user.setUserImageUrl("abc.png");
          return userRepository.  findAll();
+    }
+
+    @PutMapping
+    public ResponseEntity<UserDto> updateUser(@PathVariable Integer userId , @ResponseBody){
+
+    }
+
+    @DeleteMapping("/{userId}")
+    public ResponseEntity<Void> deleteUser(@PathVariable Integer userId){
+
     }
 
 }

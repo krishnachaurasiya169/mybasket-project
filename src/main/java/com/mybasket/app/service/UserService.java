@@ -17,5 +17,6 @@ public class UserService {
      User user1 =  userRepository.save(user);
         System.out.println(user1.getUserId());
         System.out.println("user id is saved");
+
     }
 }
