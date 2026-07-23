@@ -107,8 +107,8 @@ public class ProductController {
             throw new BadRequestException("Invalid file type !");
         }
 
-
-        // file upload code
+//        file upload code
+//       file uploading me doubt hai
         productService.updateProduct(productId, product);
         return ResponseEntity.ok(fileMetaData);
     }
