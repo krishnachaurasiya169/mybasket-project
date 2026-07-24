@@ -14,6 +14,7 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -49,7 +50,7 @@ public class ProductController {
         return productService.getAll(page,size,sortBy,sortDir);
     }
 
-    //     get single product
+//    get single product
 //    @RequestMapping( value = "/{productId}", method = RequestMethod.GET)
 //    @ResponseBody
 //    iss  mapping me direct url type kr doo
@@ -63,6 +64,7 @@ public class ProductController {
 //    @RequestMapping(method = RequestMethod.POST)
 //    or
     @PostMapping
+    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<ProductDto> createProduct(@Valid @RequestBody ProductDto productDto){
 //        System.out.println("product name : "+product.getTitle());
 //        System.out.println("Create product");
@@ -71,7 +73,10 @@ public class ProductController {
     }
 
     //    update product
+
+
     @PutMapping("/{productId}")
+    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<Product> updateProduct(@PathVariable("productId") Integer productId , @RequestBody Product product){
         System.out.println("update the data");
 //      fetch the existing products
@@ -80,14 +85,15 @@ public class ProductController {
     }
 
     //    delete product
-    @DeleteMapping
+    @PreAuthorize("hasRole('ADMIN')")
+    @DeleteMapping("/{productId}")
     public ResponseEntity<Void> deleteProduct(@PathVariable Integer productId){
         productService.deleteProduct(productId);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 
     //controller method to upload product image
-
+    @PreAuthorize("hasRole('ADMIN')")
     @PostMapping("/{productId}/image")
     public ResponseEntity<FileMetaData> uploadProductImage(
             @PathVariable("productId") Integer productId,

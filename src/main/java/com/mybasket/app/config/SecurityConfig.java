@@ -6,8 +6,6 @@ import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
-import org.springframework.security.crypto.password.NoOpPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
@@ -33,7 +31,7 @@ public class SecurityConfig {
 //                                        .requestMatchers(HttpMethod.POST).hasRole("NORMAL")
 //                                        .requestMatchers(HttpMethod.PUT).hasRole("ADMIN")
 //                                        .requestMatchers(HttpMethod.DELETE).hasRole("ADMIN")
-                                      requests  .anyRequest().permitAll()
+                                      requests.anyRequest().permitAll()
                 )
 //                if u are using browser then use formlogin
                 .formLogin(Customizer.withDefaults())
@@ -43,9 +41,5 @@ public class SecurityConfig {
         return httpSecurity.build();
     }
 
-    @Bean
-    public PasswordEncoder passwordEncoder() {
-        return NoOpPasswordEncoder.getInstance();
-    }
 
 }

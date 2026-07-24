@@ -36,6 +36,8 @@ public UserDto updateUser(Integer userId, UserDto userDto) {
     return modelMapper.map(updatedUser, UserDto.class);
 }
 
+
+@Override
     public void deleteUser(Integer userId){
     User user = userRepository.findById(userId).orElseThrow( ()-> new ResourceNotFoundException("User not found with id: " +userId ));
     userRepository.delete(user);
